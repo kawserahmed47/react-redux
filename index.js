@@ -5,6 +5,7 @@
  import { createStore } from 'react-redux'
 
 const INCREMENT = 'INCREMENT';
+const INCREMENT_BY_VALUE = 'INCREMENT_BY_VALUE';
 const DECREMENT = 'DECREMENT';
 const RESET = 'RESET';
 
@@ -18,6 +19,13 @@ const initialState = () => {
 const incrementAction = () => {
     return  {
         type: INCREMENT
+    }
+}
+
+const incrementByValueAction = ( value = 0 ) => {
+    return  {
+        type: INCREMENT_BY_VALUE,
+        payload: value
     }
 }
 
@@ -40,6 +48,11 @@ const counterReducer = (state = initialState , action) => {
             return {
                 ...state,
                 count: state.count + 1
+            }
+        case INCREMENT_BY_VALUE:
+            return {
+                ...state,
+                count: state.count + action.payload
             }
 
         case DECREMENT:
@@ -70,3 +83,4 @@ store.dispatch(incrementAction());
 store.dispatch(decrementAction());
 store.dispatch(resetAction());
 store.dispatch(incrementAction());
+store.dispatch(incrementByValueAction(5));
