@@ -66,3 +66,7 @@ store.subscribe(() => {
 })
 
 store.dispatch(incrementAction());
+store.dispatch(incrementAction());
+store.dispatch(decrementAction());
+store.dispatch(resetAction());
+store.dispatch(incrementAction());
